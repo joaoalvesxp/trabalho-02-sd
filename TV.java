@@ -1,4 +1,5 @@
 import java.io.Serializable;
+import java.rmi.RemoteException;
 
 public class TV extends Aparelho implements Transferivel {
     public TV(String nome, Double preço, int quantidadeNoEstoque, boolean transferivel) {
@@ -6,10 +7,11 @@ public class TV extends Aparelho implements Transferivel {
     }
 
     @Override
-    public boolean tranferivel(boolean podeSerTransferido) {
-        if (podeSerTransferido != true){
+    public boolean istoPodeSerTransferido(boolean istoPodeSerTransferido) throws RemoteException {
+        if (istoPodeSerTransferido) {
+            return true;
+        } else {
             return false;
         }
-        return true;
     }
 }

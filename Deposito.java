@@ -1,10 +1,13 @@
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
-public class Deposito {
+public class Deposito extends UnicastRemoteObject implements Transferivel {
     String nomeDeposito;
     ArrayList<Aparelho> aparelhos;
 
-    public Deposito(String nomeDeposito) {
+    public Deposito(String nomeDeposito) throws RemoteException {
+        super();
         this.nomeDeposito = nomeDeposito;
         this.aparelhos = new ArrayList<Aparelho>();
     }
@@ -46,7 +49,7 @@ public class Deposito {
         }
     }
 
-    public void listarAparelhos () {
+    public void listarAparelhos () throws RemoteException {
         System.out.println("----- PRODUTOS NO DEPOSITO -----");
         aparelhos.forEach((a) -> System.out.println(a));
         System.out.println("--------------------------------");
@@ -62,5 +65,10 @@ public class Deposito {
 
     public void tranferirAparelho(Aparelho aparelho) {
 
+    }
+
+    @Override
+    public boolean istoPodeSerTransferido(boolean istoPodeSerTransferido) throws RemoteException {
+        return false;
     }
 }

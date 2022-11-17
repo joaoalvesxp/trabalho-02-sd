@@ -9,7 +9,7 @@ public class Server {
 
         try {
             Registry registry = LocateRegistry.createRegistry(1099);
-            Naming.rebind("rmi://localhost:1099/Transferivel", new TranferableImplements());
+            Naming.rebind("rmi://localhost:1099/Deposito", new Deposito("DEPOSITO PRINCIPAL"));
             System.out.println("[SERVER] Servidor RMI iniciado.");
         } catch (RemoteException e) {
             e.printStackTrace();

@@ -4,6 +4,7 @@ import java.io.PrintStream;
 import java.io.FileOutputStream;
 import java.net.*;
 import java.io.*;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -34,7 +35,7 @@ public class Cliente implements  Serializable {
     }
 
 
-    private static void adicionar() {
+    private static void adicionar() throws RemoteException {
 
         Scanner scannerAdicionar = new Scanner(System.in);
 

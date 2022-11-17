@@ -6,9 +6,8 @@ import java.rmi.RemoteException;
 public class Client {
     public static void main(String[] args) {
         try {
-           Transferivel stub = (Transferivel) Naming.lookup("rmi://localhost:1099/Transferivel");
-           Boolean teste = true;
-           System.out.println(stub.istoPodeSerTransferido(true));
+           Transferivel stub = (Transferivel) Naming.lookup("rmi://localhost:1099/Deposito");
+
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         } catch (NotBoundException e) {
