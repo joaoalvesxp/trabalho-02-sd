@@ -163,30 +163,7 @@ public class Cliente implements  Serializable {
     }
 
     private static void empacotar(ArrayList<Object> aparelhos) {
-        Socket socket = null; // Socket Cliente
 
-        try {
-            int serverPort = 7896; // Porta do Servidor
-            socket = new Socket("localhost", serverPort);
-
-            DataOutputStream out = new DataOutputStream(socket.getOutputStream());
-            ObjectOutputStream outStream = new ObjectOutputStream(socket.getOutputStream());
-            outStream.writeObject(aparelhos);
-
-        } catch (UnknownHostException e) {
-            System.out.println("Socket:" + e.getMessage());
-        } catch (EOFException e) {
-            System.out.println("EOF:" + e.getMessage());
-        } catch (IOException e) {
-            System.out.println("readline:" + e.getMessage());
-        } finally {
-            if (socket != null)
-                try {
-                    socket.close();
-                } catch (IOException e) {
-                    System.out.println("close:" + e.getMessage());
-                }
-        }
 
     }
 }
