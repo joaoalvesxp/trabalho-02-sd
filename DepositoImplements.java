@@ -26,8 +26,22 @@ public class DepositoImplements extends UnicastRemoteObject implements DepositoI
             aparelhos.add(aparelho);
         }
 
-        public void removerAparelho(Aparelho aparelho) throws RemoteException {
-            aparelhos.remove(aparelho);
+        public void removerAparelho(String nomeAparelho) throws RemoteException {
+
+            if (aparelhos.size() == 0) {
+                log("ESTOQUE VAZIO, ADICIONE APARELHOS PARA ESSA AÇÃO!");
+            } else {
+
+            for (int i = 0; i < aparelhos.size(); i++) {
+                if (aparelhos.get(i).getNome().equals(nomeAparelho)) {
+                    aparelhos.remove(i);
+                    System.out.println("APARELHO REMOVIDO COM SUCESSO! ESTOQUE ATUAL");
+                    listarAparelhos();
+                } else {
+                    System.out.println("APARELHO NÃO ENCONTRADO!");
+                }
+            }
+            }
         }
         public void removerPorUnidade(String nome, int quantidadeRemover) throws RemoteException {
             for (int i = 0; i < aparelhos.size(); i++) {
@@ -55,5 +69,7 @@ public class DepositoImplements extends UnicastRemoteObject implements DepositoI
             aparelhos.forEach((a) -> System.out.println(a));
             System.out.println("--------------------------------");
         }
-
+        public void log(String mensagem) throws RemoteException {
+            System.out.println("[ LOG ] " + mensagem);
+        }
 }
